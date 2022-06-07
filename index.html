@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="css/main.css" />
+        <title>Book Shop</title>
+    </head>
+    <body onload="onInit()">
+        <div class="container">
+
+            
+            <div class="filter-container">
+                <h5>Books Filter</h5>
+                <div class="filter-inputs">
+
+                    <input class="search"
+                     type="text" 
+            onchange=" onSetFilter({txt: this.value})"
+            placeholder="Search A Book">
+
+                    <select class="max-price" 
+                    onchange="onSetFilter({maxPrice: +this.value})">
+                    <option value="0">Max Price</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                    <option value="30">30</option>
+                    <option value="50">50</option>
+                </select>
+
+                <select class="min-rate" 
+                onchange=" onSetFilter({minRate: +this.value})">
+            <option value="0">Min Rate</option>
+             <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
+
+                </div>
+            </div>
+
+
+            <button class="new-book" onclick="onAddBook()">
+                Creat new book
+            </button>
+            <table>
+                <thead>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Photo</th>
+                    <th>Price</th>
+                    <th>Rate</th>
+                    <th>Actions</th>
+                </thead>
+                <tbody></tbody>
+            </table>
+
+            <div class="modal hidden">
+                <h1>Book Name: <span class="book-name"></span></h1>
+                <h2>Price: <span class="book-price"></span></h2>
+                <h3 class="book-id hidden"></h3>
+                <h4>
+                    Rate Book:
+                    <input
+                        onchange="onChangeRate()"
+                        type="number"
+                        name="rate"
+                        min="0"
+                        max="10"
+                        placeholder="Rate Book"
+                    />
+                </h4>
+                <button class="close-modal" onclick="onCloseModal()">X</button>
+            </div>
+
+           <button class="next-page" onclick="onNextPage()">Next Page</button> 
+        </div>
+
+        <script src="js/services/util.service.js"></script>
+        <script src="js/services/storage.service.js"></script>
+        <script src="js/services/book.service.js"></script>
+        <script src="js/book.controller.js"></script>
+    </body>
+</html>
